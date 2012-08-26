@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 // ReSharper disable CheckNamespace
@@ -13,12 +10,9 @@ namespace Dependencias
 
         private int Paso { get; set; }
         public List<int> Cuadros { get; private set; }
-        public int FrameTime
-        {
-            get { return _frameTime; }
-        }
+        public int FrameTime { get; private set; }
+
         // The time we display a frame until the next one
-        private int _frameTime;
         // The time since we last updated the frame
         private int _elapsedTime;
         public int CuadroActual
@@ -35,7 +29,7 @@ namespace Dependencias
 
         public ControlAnimacion(string frames, int frameTime)
         {
-            this._frameTime = frameTime;
+            FrameTime = frameTime;
             Cuadros = new List<int>();
             var framesTmp = frames.Split(',');
             foreach (var frame in framesTmp)
@@ -49,7 +43,7 @@ namespace Dependencias
             _elapsedTime += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
             // If the elapsed time is larger than the frame time
             // we need to switch frames
-            if (_elapsedTime > _frameTime)
+            if (_elapsedTime > FrameTime)
             {
                 if (Cuadros[++Paso] == -1)
                 {

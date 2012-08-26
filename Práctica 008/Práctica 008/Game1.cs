@@ -14,31 +14,23 @@ namespace Práctica_008
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class Game1 : Microsoft.Xna.Framework.Game
+    public class Game1 : Game
     {
-        GraphicsDeviceManager graphics;
+        public SpriteBatch SpriteBatch { get; private set; }
 
-        public SpriteBatch SpriteBatch
-        {
-            get { return _spriteBatch; }
-        }
-        SpriteBatch _spriteBatch;
-        Vector2 posicion;
-        Texture2D textura;
+        Vector2 _posicion;
+        Texture2D _textura;
         private static Game1 _instance;
         public static Game1 Instance
         {
-            get
-            {
-                if (_instance == null)
-                    _instance = new Game1();
-                return _instance;
-            }
+            get { return _instance ?? (_instance = new Game1()); }
         }
+
+        private GraphicsDeviceManager Graphics { get; set; }
 
         private Game1()
         {
-            graphics = new GraphicsDeviceManager(this);
+            Graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
         }
 
@@ -51,7 +43,7 @@ namespace Práctica_008
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            posicion = new Vector2(20, 274);
+            _posicion = new Vector2(20, 274);
             base.Initialize();
         }
 
@@ -62,8 +54,8 @@ namespace Práctica_008
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
-            textura = Content.Load<Texture2D>("Imagenes/Megaman/4");
+            SpriteBatch = new SpriteBatch(GraphicsDevice);
+            _textura = Content.Load<Texture2D>("Imagenes/Megaman/4");
             // TODO: use this.Content to load your game content here
         }
 
@@ -85,7 +77,7 @@ namespace Práctica_008
         {
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
+                Exit();
 
             // TODO: Add your update logic here
 
@@ -99,9 +91,9 @@ namespace Práctica_008
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            _spriteBatch.Begin();
-            _spriteBatch.Draw(textura, posicion, Color.White);
-            _spriteBatch.End();
+            SpriteBatch.Begin();
+            SpriteBatch.Draw(_textura, _posicion, Color.White);
+            SpriteBatch.End();
             base.Draw(gameTime);
         }
     }

@@ -15,18 +15,13 @@ namespace Dependencias
         private int _filas;
         private Rectangle _sourceRect;
         private Rectangle _destinationRect;
-        private float _scale;
         public Vector2 Posicion { get; set; }
         public int Width { get; private set; }
         public int Height { get; private set; }
         public bool Active { get; set; }
         public Color Color { get; set; }
         // The scale used to display the sprite strip
-        public float Scale
-        {
-            get { return _scale; }
-            set { _scale = value; }
-        }
+        public float Scale { get; set; }
 
 
         public Imagen(Texture2D textura, int filas, int columnas, Vector2 posicion, float scale = 1)
