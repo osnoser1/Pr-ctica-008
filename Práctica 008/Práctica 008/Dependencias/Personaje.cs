@@ -70,5 +70,10 @@ namespace Dependencias
             Imagen.Draw(g, Derecha);
         }
 
+        public void MoverSobreX(int x)
+        {
+            
+        }
+
     }
 }
