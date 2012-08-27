@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Dependencias;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -8,6 +9,9 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using Personajes;
+using GamePad = Dependencias.GamePad;
+using XNAGamePad = Microsoft.Xna.Framework.Input.GamePad;
 
 namespace Práctica_008
 {
@@ -18,8 +22,8 @@ namespace Práctica_008
     {
         public SpriteBatch SpriteBatch { get; private set; }
 
-        Vector2 _posicion;
-        Texture2D _textura;
+        private Vector2 _posicion;
+        private Personaje _megaman;
         private static Game1 _instance;
         public static Game1 Instance
         {
@@ -42,8 +46,8 @@ namespace Práctica_008
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-            _posicion = new Vector2(20, 274);
+            _posicion = new Vector2(200, 274);
+            _megaman = new Megaman();
             base.Initialize();
         }
 
@@ -55,8 +59,9 @@ namespace Práctica_008
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             SpriteBatch = new SpriteBatch(GraphicsDevice);
-            _textura = Content.Load<Texture2D>("Imagenes/Megaman/4");
-            // TODO: use this.Content to load your game content here
+            var textura = Content.Load<Texture2D>("Imagenes/Megaman/Megaman");
+            var megaman = _megaman as Megaman;
+            if (megaman != null) megaman.Initialize(textura, _posicion, true, new GamePad());
         }
 
         /// <summary>
@@ -76,11 +81,14 @@ namespace Práctica_008
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            if (XNAGamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 Exit();
-
-            // TODO: Add your update logic here
-
+            var megaman = _megaman as Megaman;
+            if (megaman != null)
+            {
+                megaman.Control.ActualizarTeclas();
+                _megaman.Update(this, gameTime);
+            }
             base.Update(gameTime);
         }
 
@@ -92,7 +100,7 @@ namespace Práctica_008
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             SpriteBatch.Begin();
-            SpriteBatch.Draw(_textura, _posicion, Color.White);
+            _megaman.Draw(SpriteBatch);
             SpriteBatch.End();
             base.Draw(gameTime);
         }

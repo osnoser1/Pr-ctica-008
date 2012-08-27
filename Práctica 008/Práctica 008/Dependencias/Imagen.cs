@@ -31,7 +31,7 @@ namespace Dependencias
             Posicion = posicion;
             Scale = scale;
             _imagen = textura;
-            _imagenInvertida = invertir_imagen();
+            _imagenInvertida = InvertirImagen();
             /* El ancho y alto de una imagen de la rejilla 
             es el total entre el número de columnas y el
             total entre el numero de filas respectivamente.*/
@@ -41,12 +41,28 @@ namespace Dependencias
             Active = true;
         }
 
-        private Texture2D invertir_imagen()
+        private Texture2D InvertirImagen()
         {
-            throw new NotImplementedException();
+            return Flip(_imagen, false, true);
         }
 
-        public void Update(int estado, int frameActual)
+        public static Texture2D Flip(Texture2D source, bool vertical, bool horizontal)
+        {
+            var flipped = new Texture2D(source.GraphicsDevice, source.Width, source.Height);
+            var data = new Color[source.Width * source.Height];
+            var flippedData = new Color[data.Length];
+            source.GetData(data);
+            for (var x = 0; x < source.Width; x++)
+                for (var y = 0; y < source.Height; y++)
+                {
+                    var idx = (horizontal ? source.Width - 1 - x : x) + ((vertical ? source.Height - 1 - y : y) * source.Width);
+                    flippedData[x + y * source.Width] = data[idx];
+                }
+            flipped.SetData(flippedData);
+            return flipped;
+        }  
+
+        public void Update(int estado, int frameActual, bool derecha)
         {
             if (!Active)
                 return;
@@ -54,7 +70,8 @@ namespace Dependencias
             if (frameActual < 0 || frameActual > _columnas)
                 Console.Error.WriteLine("No existe el cuadro.");
             // Grab the correct frame in the image strip by multiplying the currentFrame index by the frame width
-            _sourceRect = new Rectangle(frameActual * Width, estado * Height, Width, Height);
+            _sourceRect = new Rectangle((derecha ? frameActual : _columnas - 1 - frameActual)*Width, estado*Height,
+                                        Width, Height);
             // Grab the correct frame in the image strip by multiplying the currentFrame index by the frame width
             _destinationRect = new Rectangle((int)Posicion.X - (int)(Width * Scale) / 2, (int)Posicion.Y - (int)(Height * Scale) / 2,
             (int)(Width * Scale), (int)(Height * Scale));
@@ -64,7 +81,7 @@ namespace Dependencias
         {
             if (!Active)
                 return;
-            Texture2D aux = null;
+            Texture2D aux;
             switch (derecha)
             {
                 case true:

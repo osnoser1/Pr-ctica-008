@@ -37,7 +37,7 @@ namespace Dependencias
             Cuadros.Add(-1);
         }
 
-        public bool Update(ref GameTime gameTime)
+        public bool Update(GameTime gameTime)
         {
             // Update the elapsed time
             _elapsedTime += (int)gameTime.ElapsedGameTime.TotalMilliseconds;

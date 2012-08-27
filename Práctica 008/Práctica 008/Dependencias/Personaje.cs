@@ -20,13 +20,15 @@ namespace Dependencias
             Inicio,
             Parado,
             Camina,
-            Salta,
             Dispara,
             DisparaSaltando,
             DisparaCorriendo,
+            Salta,
             Muere,
             Golpeado,
-            Golpea
+            Dash,
+            DisparoDash,
+            Golpea,
         }
 
         protected Estados EstadoAnterior;
@@ -54,19 +56,19 @@ namespace Dependencias
 
         protected bool Derecha { get; set; }
 
-        protected void Initialize(Vector2 posicion, bool derecha)
+        protected virtual void Initialize(Vector2 posicion, bool derecha)
         {
             Posicion = posicion;
             Derecha = derecha;
         }
 
-        public abstract void Update(Game1 juego);
+        public abstract void Update(Game1 juego, GameTime gameTime);
 
         public abstract void ColisionaCon(Personaje personaje);
 
         public virtual void Draw(SpriteBatch g)
         {
-            Imagen.Update((int)EstadoActual, Animaciones[EstadoActual].CuadroActual);
+            Imagen.Update((int)EstadoActual, Animaciones[EstadoActual].CuadroActual, Derecha);
             Imagen.Draw(g, Derecha);
         }
 
