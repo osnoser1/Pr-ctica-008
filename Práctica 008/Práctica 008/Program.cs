@@ -10,7 +10,7 @@ namespace Práctica_008
         /// </summary>
         static void Main(string[] args)
         {
-            using (Game1 game = Game1.Instance)
+            using (var game = Game1.Instance)
             {
                 game.Run();
             }

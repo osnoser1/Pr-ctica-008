@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Dependencias;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Práctica_008;
 
 // ReSharper disable CheckNamespace
 namespace Personajes
@@ -41,7 +40,7 @@ namespace Personajes
             EstadoActual = Estados.Parado;
         }
 
-        public override void Update(Game1 juego, GameTime gameTime)
+        public override void Update(Game juego, GameTime gameTime)
         {
             switch (EstadoActual)
             {
@@ -82,7 +81,7 @@ namespace Personajes
             throw new NotImplementedException();
         }
 
-        private void EstadoDispara(Game1 juego, GameTime gameTime)
+        private void EstadoDispara(Game juego, GameTime gameTime)
         {
             AplicarDisparo(juego);
             if(Animaciones[EstadoActual].Update(gameTime))
@@ -91,7 +90,7 @@ namespace Personajes
             }
         }
 
-        private void AplicarDisparo(Game1 juego)
+        private void AplicarDisparo(Game juego)
         {
             if (juego == null) throw new ArgumentNullException("juego");
         }

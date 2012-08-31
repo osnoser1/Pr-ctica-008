@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Práctica 008", "Práctica 008\Práctica 008\Práctica 008.csproj", "{00C3792C-C8EE-4130-B88F-F156B06DE0F4}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "Práctica 008Content", "Práctica 008\Práctica 008Content\Práctica 008Content.contentproj", "{E6E508B4-9B98-459E-9DD6-37F267596F3A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Práctica 008Content", "Práctica 008\Práctica 008Content\Práctica 008Content.contentproj", "{E6E508B4-9B98-459E-9DD6-37F267596F3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Megaman.Core", "Megaman.Core\Megaman.Core.csproj", "{7FAF4642-12F2-44A8-90ED-B68BB6753CA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Juego.Utilidades", "Juego.Utilidades\Juego.Utilidades.csproj", "{E86D3581-2915-45CC-BAFF-6D222C62BE63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp.Dependencias", "CSharp.Dependencias\CSharp.Dependencias.csproj", "{995A8CDF-7812-4615-8E1C-687D4B492857}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +23,18 @@ Global
 		{00C3792C-C8EE-4130-B88F-F156B06DE0F4}.Release|x86.Build.0 = Release|x86
 		{E6E508B4-9B98-459E-9DD6-37F267596F3A}.Debug|x86.ActiveCfg = Debug|x86
 		{E6E508B4-9B98-459E-9DD6-37F267596F3A}.Release|x86.ActiveCfg = Release|x86
+		{7FAF4642-12F2-44A8-90ED-B68BB6753CA4}.Debug|x86.ActiveCfg = Debug|x86
+		{7FAF4642-12F2-44A8-90ED-B68BB6753CA4}.Debug|x86.Build.0 = Debug|x86
+		{7FAF4642-12F2-44A8-90ED-B68BB6753CA4}.Release|x86.ActiveCfg = Release|x86
+		{7FAF4642-12F2-44A8-90ED-B68BB6753CA4}.Release|x86.Build.0 = Release|x86
+		{E86D3581-2915-45CC-BAFF-6D222C62BE63}.Debug|x86.ActiveCfg = Debug|x86
+		{E86D3581-2915-45CC-BAFF-6D222C62BE63}.Debug|x86.Build.0 = Debug|x86
+		{E86D3581-2915-45CC-BAFF-6D222C62BE63}.Release|x86.ActiveCfg = Release|x86
+		{E86D3581-2915-45CC-BAFF-6D222C62BE63}.Release|x86.Build.0 = Release|x86
+		{995A8CDF-7812-4615-8E1C-687D4B492857}.Debug|x86.ActiveCfg = Debug|x86
+		{995A8CDF-7812-4615-8E1C-687D4B492857}.Debug|x86.Build.0 = Debug|x86
+		{995A8CDF-7812-4615-8E1C-687D4B492857}.Release|x86.ActiveCfg = Release|x86
+		{995A8CDF-7812-4615-8E1C-687D4B492857}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

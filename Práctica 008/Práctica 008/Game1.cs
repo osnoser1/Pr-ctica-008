@@ -47,7 +47,7 @@ namespace Práctica_008
         protected override void Initialize()
         {
             _posicion = new Vector2(200, 274);
-            _megaman = new Megaman();
+            _megaman = new Personajes.Megaman();
             base.Initialize();
         }
 
@@ -60,7 +60,7 @@ namespace Práctica_008
             // Create a new SpriteBatch, which can be used to draw textures.
             SpriteBatch = new SpriteBatch(GraphicsDevice);
             var textura = Content.Load<Texture2D>("Imagenes/Megaman/Megaman");
-            var megaman = _megaman as Megaman;
+            var megaman = _megaman as Personajes.Megaman;
             if (megaman != null) megaman.Initialize(textura, _posicion, true, new GamePad());
         }
 
@@ -83,7 +83,7 @@ namespace Práctica_008
             // Allows the game to exit
             if (XNAGamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 Exit();
-            var megaman = _megaman as Megaman;
+            var megaman = _megaman as Personajes.Megaman;
             if (megaman != null)
             {
                 megaman.Control.ActualizarTeclas();

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Práctica_008;
 
 // ReSharper disable CheckNamespace
 namespace Dependencias
@@ -62,7 +61,7 @@ namespace Dependencias
             Derecha = derecha;
         }
 
-        public abstract void Update(Game1 juego, GameTime gameTime);
+        public abstract void Update(Game juego, GameTime gameTime);
 
         public abstract void ColisionaCon(Personaje personaje);
 

@@ -107,11 +107,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dependencias\Imagen.cs" />
-    <Compile Include="Dependencias\Control_Animacion.cs" />
-    <Compile Include="Dependencias\Personaje.cs" />
-    <Compile Include="Dependencias\GamePad.cs" />
-    <Compile Include="Personajes\Megaman.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
@@ -121,6 +116,14 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Juego.Utilidades\Juego.Utilidades.csproj">
+      <Project>{E86D3581-2915-45CC-BAFF-6D222C62BE63}</Project>
+      <Name>Juego.Utilidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Megaman.Core\Megaman.Core.csproj">
+      <Project>{7FAF4642-12F2-44A8-90ED-B68BB6753CA4}</Project>
+      <Name>Megaman.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Práctica 008Content\Práctica 008Content.contentproj">
       <Name>Práctica_008Content</Name>
       <XnaReferenceType>Content</XnaReferenceType>
