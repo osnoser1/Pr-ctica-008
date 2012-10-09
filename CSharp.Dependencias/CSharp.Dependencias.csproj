@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Imagen.cs" />
+    <Compile Include="ManejadorDeArchivos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sonido.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
